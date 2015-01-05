@@ -17,7 +17,7 @@
     }
   ],
   "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install | xargs echo && grunt dev"
+    "postinstall": "node node_modules/bower/bin/bower install > /dev/null 2>&1 | xargs echo && grunt dev > /dev/null 2>&1"
   },
   "engines": {
     "node": ">= 0.10.0"
