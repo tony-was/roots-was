@@ -83,7 +83,7 @@ module.exports = function (grunt) {
         autoprefixer: {
             dev: {
                 options: {
-                    browsers: ['last 2 versions', 'ie8', 'android 2.3', 'android 4', 'opera 12'],
+                    browsers: ['last 2 versions', 'ie 8', 'android 2.3', 'android 4', 'opera 12'],
                     map: {
                         prev: 'assets/css/'
                     }
@@ -92,7 +92,7 @@ module.exports = function (grunt) {
             },
             build: {
                 options: {
-                    browsers: ['last 2 versions', 'ie8', 'android 2.3', 'android 4', 'opera 12']
+                    browsers: ['last 2 versions', 'ie 8', 'android 2.3', 'android 4', 'opera 12']
                 },
                 src: 'assets/css/main.min.css'
             },
