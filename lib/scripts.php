@@ -22,6 +22,7 @@ function roots_scripts() {
   if (WP_ENV === 'development') {
     $assets = array(
       'css'       => '/assets/css/main.css',
+      'css-ie9' => '/assets/css/main-ie9.min.css',
       'js'        => '/assets/js/scripts.js',
       'modernizr' => '/assets/vendor/modernizr/modernizr.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
@@ -31,6 +32,7 @@ function roots_scripts() {
     $assets     = json_decode($get_assets, true);
     $assets     = array(
       'css'       => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
+      'css-ie9' => '/assets/css/main-ie9.min.css?' . $assets['assets/css/main-ie9.min.css']['hash'],
       'js'        => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
@@ -38,6 +40,10 @@ function roots_scripts() {
   }
 
   wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
+  wp_enqueue_style('roots_css_ie9', get_template_directory_uri() . $assets['css-ie9'], false, null);
+  global $wp_styles;
+  $wp_styles->add_data( 'roots_css', 'conditional', '!IE' ); // see also my_downlevel_revealed()
+  $wp_styles->add_data( 'roots_css_ie9', 'conditional', 'IE 9' );
 
   /**
    * jQuery is loaded using the same method from HTML5 Boilerplate:
